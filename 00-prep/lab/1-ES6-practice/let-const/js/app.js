@@ -1,20 +1,20 @@
 'use strict';
 
-var names = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
+let names = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
 
-var leftImage = document.getElementById('left');
-var centerImage = document.getElementById('center');
-var rightImage = document.getElementById('right');
+let leftImage = document.getElementById('left');
+let centerImage = document.getElementById('center');
+let rightImage = document.getElementById('right');
 
-var allProducts = [];
-var container = document.getElementById('image_container');
-var viewed = [];
-var labels = [];
-var pics = [leftImage, centerImage, rightImage];
-var list = document.getElementById('productlist');
-var totalClicks = 0;
-var views = [];
-var votes = [];
+let allProducts = [];
+let container = document.getElementById('image_container');
+let viewed = [];
+let labels = [];
+let pics = [leftImage, centerImage, rightImage];
+let list = document.getElementById('productlist');
+let totalClicks = 0;
+let views = [];
+let votes = [];
 
 function Product(name) {
   this.name = name;
@@ -30,18 +30,18 @@ function makeRandom() {
 
 function displayPics(){
   while(viewed.length < 6){
-    var rando = makeRandom();
+    let rando = makeRandom();
     while(!viewed.includes(rando)){
       viewed.push(rando);
     }
   }
-  console.log(rando);
+  
   // TODO: In a sentence or two, explain why the previous line of code threw an error when we changed the variable declaration from `var to `let`.
-  // PUT YOUR RESPONSE IN THIS COMMENT
+  // It didnt work because let is used in the For loop not while loop whereas we can use var for both.
   console.log(viewed);
 
   for (var i = 0; i < 3; i++){
-    var temp = viewed.shift();
+    let temp = viewed.shift();
     pics[i].src = allProducts[temp].path;
     pics[i].id = allProducts[temp].name;
     allProducts[temp].views += 1;
