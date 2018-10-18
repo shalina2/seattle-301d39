@@ -29,10 +29,12 @@ Dog.prototype.renderJQ = function () {
 };
 
 Dog.prototype.renderHandlebars = function() {
-  let dogSource = $('#dog-handlebars').html();
-  let dogTemplate = Handlebars.compile(dogSource);
+  let dogSource = $('#dog-handlebars').html(); //we need the html
+  let dogTemplate = Handlebars.compile(dogSource); // HB takes that html and builds a function with it that takes in an object with matching property names
 
   let dogHtml = dogTemplate(this);
+
+
 
   $('body').append(dogHtml);
 
