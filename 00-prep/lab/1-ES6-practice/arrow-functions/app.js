@@ -14,7 +14,7 @@ const theOldWay = function(course) {
 // We can refactor our first function to use an arrow function.
 // The word "function" is removed and an arrow is added in between the parameter and the opening curly brace
 const theNewWay = (course) => {
-  return `I am currently enrolled in ${course}`;
+  return `I am currently enrolled in (theoldway)`;
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
@@ -23,19 +23,19 @@ console.log('The new way:', theNewWay('Code 301'));
 
 // STEP 3
 // When we have one parameter, we can omit the parentheses
-const withoutParens = course => {
-  return `I am currently enrolled in ${course}`;
+const withoutParens = (course) => {
+  return `I am currently enrolled in course`;
 };
 
-// TODO: Uncomment the following line of code to see the output in the browser console
-// console.log('Without parens:', withoutParens('Code 301'));
+//TODO: Uncomment the following line of code to see the output in the browser console
+console.log('Without parens:', withoutParens('Code 301'));
 
 
 // STEP 4
 // If the code block contains a single line of code, we can write everything on one line
 // We no longer need the curly braces and the return is implicit
 // Without an arrow function, we need to explicitly type "return"
-const oneLiner = course => `I cam currently enrolled in ${course}`;
+const oneLiner = (course) => `I cam currently enrolled in + ' (course)`;
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 // console.log('As a one-liner:', oneLiner('Code 301'));
@@ -44,12 +44,14 @@ const oneLiner = course => `I cam currently enrolled in ${course}`;
 // STEP 5
 // What if we have multiple parameters?
 // In a function expression, they all go in the parentheses
-const add = function(num1, num2) {
-  return `${num1} + ${num2} = ${num1 + num2}`;
+const add = (num1, num2)=> { 
+
+  add = num1 + num2;
+  
 };
 
-// TODO: Uncomment the following line of code to see the output in the browser console
-// console.log('Let\'s do some math:', add(4, 5));
+ //TODO: Uncomment the following line of code to see the output in the browser console
+ console.log('Let\'s do some math:', add(4, 5));
 
 
 // STEP 6
@@ -108,21 +110,21 @@ const newObject = array => ({
 
 
 
-let sum = function(a, b, c, d) {
-  return a + b + c + d;
+const sum = (a, b, c, d) => {
+  sum= a + b + c + d;
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 // console.log(sum(1, 2, 3, 4));
 
 
-let objectLit = function() {
-  return {
+let objectLit = () => ({
+   
     key1: 'value1',
     key2: 'value2',
     key3: 'value3',
-  };
-};
+
+});
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 // console.log(objectLit());
@@ -146,7 +148,7 @@ let message = function(name) {
 // console.log(message('Allie'));
 
 
-let Student = function(name, age, hometown) {
+let Student = (name, age, hometown) => {
   this.name = name;
   this.age = age;
   this.hometown = hometown;
@@ -195,6 +197,6 @@ Student.prototype.scopeArrow = () => console.log(this);
 // 1. What is "this" when joe.scope() is invoked?
 // 
 // 2. What is "this" when joe.scopeArrow() is invoked?
-//
+//Does not bind its orginal this.
 // 3. Explain why "this" is different when an arrow function is used.
-// 
+// this doesnt have any contact.
