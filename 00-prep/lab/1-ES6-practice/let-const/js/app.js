@@ -6,7 +6,7 @@ const leftImage = document.getElementById('left');
 const centerImage = document.getElementById('center');
 const rightImage = document.getElementById('right');
 
-let allProducts = [];
+let  allProducts = [];
 const container = document.getElementById('image_container');
 const viewed = [];
 const labels = [];
@@ -37,11 +37,11 @@ function displayPics(){
   }
   
   // TODO: In a sentence or two, explain why the previous line of code threw an error when we changed the variable declaration from `var to `let`.
-  // It didnt work because let is used in scope.
+  // PUT YOUR RESPONSE IN THIS COMMENT
   console.log(viewed);
 
   for (let i = 0; i < 3; i++){
-    let temp = viewed.shift();
+    var temp = viewed.shift();
     pics[i].src = allProducts[temp].path;
     pics[i].id = allProducts[temp].name;
     allProducts[temp].views += 1;
@@ -52,7 +52,7 @@ function handleClick(event) {
   if (event.target.id === 'image_container') {
     return alert('Be sure to click directly on an image!!');
   }
-  totalClicks += 1;
+  const totalClicks = 1; // i dont know how it works with the += sign here since it was throwing an error.
   if(totalClicks > 24) {
     container.removeEventListener('click', handleClick);
     container.style.display = 'none';
@@ -88,7 +88,7 @@ function makeChartData(){
 
 function makeChart(){
   makeChartData();
-  const ctx = document.getElementById('chartypants').getContext('2d');
+  let ctx = document.getElementById('chartypants').getContext('2d');
   new Chart(ctx, { //eslint-disable-line
     type: 'bar',
     data: {
@@ -123,14 +123,6 @@ document.getElementById('bus').addEventListener('click', function(){
   console.log('Local storage was cleared!');
 });
 
-if(localStorage.busmall){
-  console.log('Local storage data exists');
-  allProducts = JSON.parse(localStorage.busmall);
-} else {
-  console.log('There is no local storage data; initialize app by creating instances');
-  for(var i = 0; i < names.length; i++) {
-    new Product(names[i]);
-  }
-}
+
 
 displayPics();
