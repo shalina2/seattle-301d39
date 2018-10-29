@@ -2,12 +2,12 @@
 
 // STEP 1
 // This is a standard function expression. You may also be familiar with function declarations, which begin with the "function" keyword.
-const theOldWay = (course)=> {
+const theOldWay = (course)=>{
   return `I am currently enrolled in ${course}`;
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-console.log('The old way:', theOldWay('Code 301'));
+ console.log('The old way:', theOldWay('Code 301'));
 
 
 // STEP 2
@@ -18,7 +18,7 @@ const theNewWay = (course) => {
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-console.log('The new way:', theNewWay('Code 301'));
+ console.log('The new way:', theNewWay('Code 301'));
 
 
 // STEP 3
@@ -28,14 +28,14 @@ const withoutParens = course => {
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-console.log('Without parens:', withoutParens('Code 301'));
+ console.log('Without parens:', withoutParens('Code 301'));
 
 
 // STEP 4
 // If the code block contains a single line of code, we can write everything on one line
 // We no longer need the curly braces and the return is implicit
 // Without an arrow function, we need to explicitly type "return"
-const oneLiner = course =>  `I cam currently enrolled in ${course}`;
+const oneLiner = course => `I cam currently enrolled in ${course}`;
 
 // TODO: Uncomment the following line of code to see the output in the browser console
  console.log('As a one-liner:', oneLiner('Code 301'));
@@ -44,7 +44,7 @@ const oneLiner = course =>  `I cam currently enrolled in ${course}`;
 // STEP 5
 // What if we have multiple parameters?
 // In a function expression, they all go in the parentheses
-const add = (num1, num2)=>{
+const add = (num1, num2)=> {
   return `${num1} + ${num2} = ${num1 + num2}`;
 };
 
@@ -58,7 +58,7 @@ const add = (num1, num2)=>{
 const addOneLiner = (num1, num2) => `${num1} + ${num2} = ${num1 + num2}`;
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-console.log('Add as a one-liner:', addOneLiner(4, 5));
+ console.log('Add as a one-liner:', addOneLiner(4, 5));
 
 
 // STEP 7
@@ -76,7 +76,7 @@ const multiLiner = word => {
 // STEP 8
 // The way an object is returned is different with an arrow function, too.
 // Here is how we return an object without arrow functions
-const oldObject = (array) =>{
+const oldObject = function(array) {
   return {
     firstValue: array[0],
     secondValue: array[1],
@@ -108,12 +108,12 @@ const newObject = array => ({
 
 
 
-const sum = (a, b, c, d)=> {
+let sum = function(a, b, c, d) {
   return a + b + c + d;
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-console.log(sum(1, 2, 3, 4));
+ console.log(sum(1, 2, 3, 4));
 
 
 let objectLit = function() {
@@ -138,12 +138,12 @@ let sumAndProduct = function(a, b) {
  console.log(sumAndProduct(3, 9));
 
 
-let message = function(name) {
+let message = (name)=> {
   return `Hello, ${name}!`;
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-console.log(message('Allie'));
+ console.log(message('Allie'));
 
 
 let Student = function(name, age, hometown) {
@@ -156,10 +156,10 @@ let joe = new Student('Joe', 'Schmoe', 100);
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this code to break!
-// console.log(joe);
+ console.log(joe);
 
 
-Student.prototype.greeting = function() {
+Student.prototype.greeting = function(){
   return `Hi, my name is ${this.name}`;
 };
 
@@ -173,7 +173,7 @@ Student.courseName = function() {
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
- console.log(Student.courseName());
+// console.log(Student.courseName());
 
 
 
@@ -193,8 +193,8 @@ Student.prototype.scopeArrow = () => console.log(this);
 
 // TODO: Write a COMMENT below to answer the following questions.
 // 1. What is "this" when joe.scope() is invoked?
- window
+// undefined
 // 2. What is "this" when joe.scopeArrow() is invoked?
-arrow
+//undefined
 // 3. Explain why "this" is different when an arrow function is used.
-this bounds with nothing in arrow function
+// because we dont use prototype in arrow function.
