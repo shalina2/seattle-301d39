@@ -6,13 +6,13 @@ const leftImage = document.getElementById('left');
 const centerImage = document.getElementById('center');
 const rightImage = document.getElementById('right');
 
-let  allProducts = [];
+let allProducts = [];
 const container = document.getElementById('image_container');
 const viewed = [];
 const labels = [];
 const pics = [leftImage, centerImage, rightImage];
 const list = document.getElementById('productlist');
-let totalClicks = 0;
+const totalClicks = 0;
 const views = [];
 const votes = [];
 
@@ -35,13 +35,13 @@ function displayPics(){
       viewed.push(rando);
     }
   }
-  
+  console.log(rando);
   // TODO: In a sentence or two, explain why the previous line of code threw an error when we changed the variable declaration from `var to `let`.
-  // PUT YOUR RESPONSE IN THIS COMMENT
+  // we used let in while loop
   console.log(viewed);
 
   for (let i = 0; i < 3; i++){
-    var temp = viewed.shift();
+    let temp = viewed.shift();
     pics[i].src = allProducts[temp].path;
     pics[i].id = allProducts[temp].name;
     allProducts[temp].views += 1;
@@ -52,7 +52,7 @@ function handleClick(event) {
   if (event.target.id === 'image_container') {
     return alert('Be sure to click directly on an image!!');
   }
-  const totalClicks = 1; // i dont know how it works with the += sign here since it was throwing an error.
+  
   if(totalClicks > 24) {
     container.removeEventListener('click', handleClick);
     container.style.display = 'none';
@@ -123,6 +123,14 @@ document.getElementById('bus').addEventListener('click', function(){
   console.log('Local storage was cleared!');
 });
 
-
+if(localStorage.busmall){
+  console.log('Local storage data exists');
+  allProducts = JSON.parse(localStorage.busmall);
+} else {
+  console.log('There is no local storage data; initialize app by creating instances');
+  for(let i = 0; i < names.length; i++) {
+    new Product(names[i]);
+  }
+}
 
 displayPics();
