@@ -1,6 +1,7 @@
 'use strict';
 
-const names = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
+var names = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
+
 
 const leftImage = document.getElementById('left');
 const centerImage = document.getElementById('center');
@@ -14,6 +15,7 @@ const list = document.getElementById('productlist');
 const totalClicks = 0;
 const views = [];
 const votes = [];
+
 
 function Product(name) {
   this.name = name;
@@ -36,11 +38,11 @@ function displayPics(){
   }
   console.log(rando);
   // TODO: In a sentence or two, explain why the previous line of code threw an error when we changed the variable declaration from `var to `let`.
-  // we used let in while loop
+  // we used let in while loops
   console.log(viewed);
 
   for (let i = 0; i < 3; i++){
-    let temp = viewed.shift();
+    var temp = viewed.shift();
     pics[i].src = allProducts[temp].path;
     pics[i].id = allProducts[temp].name;
     allProducts[temp].views += 1;
@@ -51,7 +53,7 @@ function handleClick(event) {
   if (event.target.id === 'image_container') {
     return alert('Be sure to click directly on an image!!');
   }
-  
+  totalClicks += 1;
   if(totalClicks > 24) {
     container.removeEventListener('click', handleClick);
     container.style.display = 'none';
@@ -64,13 +66,12 @@ function handleClick(event) {
       console.log(event.target.id + ' has ' + allProducts[i].votes + ' votes in ' + allProducts[i].views + ' views');
     }
   }
-  localStorage.busmall = JSON.stringify(allProducts);
-  localStorage.busmallProducts = JSON.stringify(allProducts);
+  
   displayPics();
 }
 
 function showList() {
-  for(let i = 0; i < allProducts.length; i++) {
+  for(var i = 0; i < allProducts.length; i++) {
     var liEl = document.createElement('li');
     liEl.textContent = allProducts[i].name + ' has ' + allProducts[i].votes + ' votes in ' + allProducts[i].views + ' views';
     list.appendChild(liEl);
@@ -87,7 +88,7 @@ function makeChartData(){
 
 function makeChart(){
   makeChartData();
-  let ctx = document.getElementById('chartypants').getContext('2d');
+  var ctx = document.getElementById('chartypants').getContext('2d');
   new Chart(ctx, { //eslint-disable-line
     type: 'bar',
     data: {
@@ -127,7 +128,7 @@ if(localStorage.busmall){
   allProducts = JSON.parse(localStorage.busmall);
 } else {
   console.log('There is no local storage data; initialize app by creating instances');
-  for(let i = 0; i < names.length; i++) {
+  for(var i = 0; i < names.length; i++) {
     new Product(names[i]);
   }
 }
