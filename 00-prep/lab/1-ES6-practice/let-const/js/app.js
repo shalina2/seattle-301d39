@@ -5,7 +5,6 @@ const names = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', '
 const leftImage = document.getElementById('left');
 const centerImage = document.getElementById('center');
 const rightImage = document.getElementById('right');
-
 let allProducts = [];
 const container = document.getElementById('image_container');
 const viewed = [];
